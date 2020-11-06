@@ -1,0 +1,7 @@
+http://rik-i-morti.ru/templates/rickmorty/images/head.jpg
+
+
+
+/loader
+https://www.rickandmorty.com/assets/images/common/loader.png
+https://www.rickandmorty.com/assets/images/common/loader-cover.png

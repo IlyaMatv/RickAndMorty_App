@@ -1,0 +1,4 @@
+.input_wrap {
+    grid-area: input;
+    border: 1px solid red;
+}

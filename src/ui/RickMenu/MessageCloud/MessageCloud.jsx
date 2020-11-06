@@ -1,0 +1,26 @@
+import React, { useState } from "react";
+import classes from "./MessageCloud.module.css";
+import Name from "./Name/Name";
+import MessageText from "./MessageText/MessageText";
+import MessageLink from "./MessageLink/MessageLink";
+
+const MessageCloud = (props) => {
+  const [isActive, setIsActive] = useState(true);
+
+  const onMouseHandler = () => {
+    setIsActive(!isActive);
+  };
+
+  return (
+    <div
+      className={classes.message}
+      onMouseEnter={onMouseHandler}
+      onMouseLeave={onMouseHandler}
+    >
+      <Name />
+      {isActive ? <MessageText /> : <MessageLink />}
+    </div>
+  );
+};
+
+export default MessageCloud;
