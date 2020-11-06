@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    max-width: 60%;
 }
 
 .links a {
@@ -16,4 +17,9 @@
 
 .links a.active {
     color: #ffffff;
+}
+
+.links a:hover {
+    color: #fff;
+    font-size: 34px;
 }
