@@ -17,3 +17,17 @@
     ". content"
     "input content"
 }
+
+
+@media screen and (max-width: 1600px) {
+  .app {
+    grid-template-columns: 1fr 1.5fr;
+  }
+}
+
+@media screen and (max-width: 1470px) {
+  .app {
+    grid-template-columns: 1fr 1.7fr;
+    grid-template-rows: 0.2fr 1fr 2fr;
+  }
+}

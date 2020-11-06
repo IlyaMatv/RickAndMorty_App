@@ -1,6 +1,10 @@
 .content {
     grid-area: content;
-    border: 1px solid red;
 }
 
-
+/* 
+@media screen and (max-width: 1600px) {
+    .content {
+        border: 1px solid #fff;
+    }
+  } */
