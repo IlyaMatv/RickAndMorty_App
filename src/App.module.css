@@ -10,14 +10,20 @@
 .app {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 2.5fr;
-  grid-template-rows: 0.4fr 1fr 2fr;
+  grid-template-columns: 1fr 2.4fr;
+  grid-template-rows: 0.5fr 1fr 2fr;
   grid-template-areas:
     ". ."
     ". content"
     "input content"
 }
 
+
+@media screen and (max-width: 1868px) {
+  .app {
+    grid-template-rows: 0.5fr 2fr 2fr;
+  }
+}
 
 @media screen and (max-width: 1600px) {
   .app {
