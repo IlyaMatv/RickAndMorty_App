@@ -47,7 +47,7 @@ const Characters = (props) => {
 
       <div className={s.btn_wrap}>
         <div>
-            <PageButton text="prev" onClickBtn={onClickBtnPrev} />
+            <PageButton text="prev" disabled={nextPage <= 1 ? true : false} onClickBtn={onClickBtnPrev} />
             <PageButton text="next" onClickBtn={onClickBtnNext} />
         </div>
         <div className={s.pageIs}>

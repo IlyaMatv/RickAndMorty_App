@@ -7,9 +7,10 @@ const PageButton = (props) => {
     <ScrollTo>
       {({ scroll }) => (
         <button
+          disabled={props.disabled}
           onClick={() => {
             props.onClickBtn();
-            scroll({ y: 0, smooth: true });
+            !props.disabled && scroll({ y: 0, smooth: true });
           }}
           className={s.link}
         >
