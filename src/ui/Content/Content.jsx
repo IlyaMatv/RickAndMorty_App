@@ -17,6 +17,9 @@ const Content = (props) => {
       ) : (
         false
       )}
+
+      
+      
     </div>
   );
 };

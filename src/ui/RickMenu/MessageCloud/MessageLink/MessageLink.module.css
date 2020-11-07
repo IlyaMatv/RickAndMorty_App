@@ -7,6 +7,7 @@
     flex-direction: column;
     justify-content: space-around;
     max-width: 60%;
+    
 }
 
 .links a {
@@ -22,4 +23,5 @@
 .links a:hover {
     color: #fff;
     font-size: 34px;
+    transition: .5s;
 }
