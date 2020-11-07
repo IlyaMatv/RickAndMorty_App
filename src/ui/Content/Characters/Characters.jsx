@@ -19,7 +19,6 @@ const Characters = (props) => {
     setNextPage(nextPage + 1);
   };
 
-  console.log(nextPage);
   const onClickBtnPrev = () => {
     if (nextPage >= 2) {
       dispatch(getNextCharactersTC(nextPage - 1));
@@ -48,10 +47,12 @@ const Characters = (props) => {
 
       <div className={s.btn_wrap}>
         <div>
-          <PageButton text="prev" onClickBtn={onClickBtnPrev} />
-          <PageButton text="next" onClickBtn={onClickBtnNext} />
+            <PageButton text="prev" onClickBtn={onClickBtnPrev} />
+            <PageButton text="next" onClickBtn={onClickBtnNext} />
         </div>
-        <div className={s.pageIs}>Page is: <b>{nextPage}</b></div>
+        <div className={s.pageIs}>
+          Page is: <b>{nextPage}</b>
+        </div>
       </div>
     </div>
   );
