@@ -1,8 +1,7 @@
 import { api } from "../api/api";
 
 const initialState = {
-  characters: [],
-  nextPage: 1
+  characters: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -26,16 +25,14 @@ export const setCharacters = (characters) => ({
 //thunk
 
 export const getCharactersTC = () => (dispatch) => {
-  
   api.getCharacters().then((res) => {
-    dispatch(setCharacters(res.results));
+    dispatch(setCharacters(res));
   });
 };
 
 export const getNextCharactersTC = (page) => (dispatch) => {
-  
   api.getNextPage(page).then((res) => {
-    dispatch(setCharacters(res.results));
+    dispatch(setCharacters(res));
   });
 };
 

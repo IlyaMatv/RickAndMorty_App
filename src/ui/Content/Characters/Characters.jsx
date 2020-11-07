@@ -15,8 +15,12 @@ const Characters = (props) => {
   }, []);
 
   const onClickBtnNext = () => {
-    dispatch(getNextCharactersTC(nextPage + 1));
-    setNextPage(nextPage + 1);
+    if (nextPage <= 33) {
+      dispatch(getNextCharactersTC(nextPage + 1));
+      setNextPage(nextPage + 1);
+    } else {
+      return false;
+    }
   };
 
   const onClickBtnPrev = () => {
@@ -47,8 +51,16 @@ const Characters = (props) => {
 
       <div className={s.btn_wrap}>
         <div>
-            <PageButton text="prev" disabled={nextPage <= 1 ? true : false} onClickBtn={onClickBtnPrev} />
-            <PageButton text="next" onClickBtn={onClickBtnNext} />
+          <PageButton
+            text="prev"
+            disabled={nextPage <= 1 ? true : false}
+            onClickBtn={onClickBtnPrev}
+          />
+          <PageButton
+            text="next"
+            disabled={nextPage >= 34 ? true : false}
+            onClickBtn={onClickBtnNext}
+          />
         </div>
         <div className={s.pageIs}>
           Page is: <b>{nextPage}</b>
