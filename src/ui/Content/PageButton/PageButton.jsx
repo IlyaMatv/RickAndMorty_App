@@ -10,6 +10,7 @@ const PageButton = (props) => {
           disabled={props.disabled}
           onClick={() => {
             props.onClickBtn();
+            console.log(props.disabled)
             !props.disabled && scroll({ y: 0, smooth: true });
           }}
           className={s.link}

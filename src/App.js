@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import s from "./App.module.css";
 import Content from "./ui/Content/Content";
@@ -7,16 +8,14 @@ import Search from "./ui/Search/Search";
 
 function App() {
   
+  const isSearchActive = useSelector((state) => state.isSearchActive);
 
   return (
     <div className={s.wrapper}>
       <div className={s.app}>
         <Header />
         <RickMenu />
-        {/* <Search /> */}
-
-
-
+        {isSearchActive && <Search />}
 
         <Switch>
 

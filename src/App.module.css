@@ -13,9 +13,9 @@
   grid-template-columns: 1fr 2.4fr;
   grid-template-rows: 0.5fr 1fr 2fr;
   grid-template-areas:
-    ". ."
+    ". search"
     ". content"
-    "input content"
+    ". content"
 }
 
 
