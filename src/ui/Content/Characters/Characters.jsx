@@ -30,7 +30,6 @@ const Characters = (props) => {
     setNextPage(nextPage + 1);
   };
 
-  console.log("page " + nextPage, "state number page: " + numberOfPages);
   const onClickBtnPrev = () => {
     dispatch(getNextCharactersTC(nextPage - 1, pageUrl))
     setNextPage(nextPage - 1)
