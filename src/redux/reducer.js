@@ -63,7 +63,8 @@ export const getNextCharactersTC = (page, pageUrl = "") => (dispatch) => {
 
 export const getCharactersByNameTC = (name, pageUrl) => (dispatch) => {
   api.getByName(name).then((res) => {
-    dispatch(setCharacters(res));
+    dispatch(setCharacters(res.data.results));
     dispatch(setNextPageUrl(pageUrl));
+    dispatch(setNumberOfPages(res.data.info.pages));
   });
 };

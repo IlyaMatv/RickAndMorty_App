@@ -19,7 +19,7 @@ export const api = {
     return axios
       .get(`https://rickandmortyapi.com/api/character/?name=${name}`)
       .then((res) => {
-        return res.data.results;
+        return res;
       });
   },
 };

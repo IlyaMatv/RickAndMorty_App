@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import s from "./PageButton.module.css";
 import { ScrollTo } from "react-scroll-to";
 

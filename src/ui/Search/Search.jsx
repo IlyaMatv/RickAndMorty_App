@@ -11,8 +11,8 @@ const Search = (props) => {
     setInputValue(e.target.value);
   };
 
-  const sendName = () => {
-    let name = inputValue.toLocaleLowerCase();
+  const btnOnClick = () => {
+    let name = inputValue.toLowerCase();
     let nameUrl = `&name=${name}`
     dispatch(getCharactersByNameTC(name, nameUrl));
     setInputValue("")
@@ -30,7 +30,7 @@ const Search = (props) => {
           placeholder="looking for someone?"
         />
         <div>
-          <button onClick={sendName} className={s.search_btn}>
+          <button onClick={btnOnClick} className={s.search_btn}>
             <b>
               <i class="fas fa-search"></i>
             </b>
