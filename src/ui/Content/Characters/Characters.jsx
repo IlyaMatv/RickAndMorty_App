@@ -15,7 +15,7 @@ const Characters = (props) => {
   const [nextPage, setNextPage] = useState(1);
   const characters = useSelector((state) => state.characters);
   const pageUrl = useSelector((state) => state.nextPageUrl);
-  const isDisabledBtn = useSelector((state) => state.isDisabledBtn);
+  const numberOfPages = useSelector((state) => state.numberOfPages);
 
   useEffect(() => {
     dispatch(getCharactersTC());
@@ -27,25 +27,14 @@ const Characters = (props) => {
   }, []);
 
   const onClickBtnNext = () => {
-    if (nextPage <= 33) {
-      dispatch(getNextCharactersTC(nextPage + 1, pageUrl));
-      setNextPage(nextPage + 1);
-      // console.log(isDisabledBtn)
-    } else {
-      return false;
-    }
+    dispatch(getNextCharactersTC(nextPage + 1, pageUrl));
+    setNextPage(nextPage + 1);
   };
 
   const onClickBtnPrev = () => {
-    if (nextPage >= 2) {
-      dispatch(getNextCharactersTC(nextPage - 1, pageUrl));
-      setNextPage(nextPage - 1);
-    } else {
-      return false;
-    }
+    dispatch(getNextCharactersTC(nextPage - 1, pageUrl));
+    setNextPage(nextPage - 1);
   };
-
-  // console.log(nextPage)
 
   return (
     <div className={s.wrap}>
@@ -66,18 +55,12 @@ const Characters = (props) => {
         <div>
           <PageButton
             text="prev"
-            // disabled={() => {
-            //   if (nextPage <= 1) {
-            //     return true;
-            //   } else if (nextPage > 1) {
-            //     return false;
-            //   }
-            // }}
+            disabled={nextPage <= 1 ? true : false}
             onClickBtn={onClickBtnPrev}
           />
           <PageButton
             text="next"
-            disabled={isDisabledBtn}
+            disabled={nextPage >= numberOfPages ? true : false}
             onClickBtn={onClickBtnNext}
           />
         </div>

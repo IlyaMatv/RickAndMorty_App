@@ -5,15 +5,13 @@ export const api = {
     return axios
       .get("https://rickandmortyapi.com/api/character")
       .then((res) => {
-        return res.data.results;
+        return res;
       });
   },
   getNextPage(page, pageUrl) {
-    // debugger
     return axios
       .get(`https://rickandmortyapi.com/api/character?page=${page}${pageUrl}`)
       .then((res) => {
-        // console.log(page, `res page: ${res.data.info.pages}`);
         return res;
       });
   },

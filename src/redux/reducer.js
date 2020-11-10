@@ -4,7 +4,7 @@ const initialState = {
   characters: [],
   nextPageUrl: "",
   isSearchActive: false,
-  isDisabledBtn: false
+  numberOfPages: null
 };
 
 export const reducer = (state = initialState, action) => {
@@ -15,8 +15,8 @@ export const reducer = (state = initialState, action) => {
       return { ...state, isSearchActive: !state.isSearchActive };
     case "SWITCH_PAGE_URL":
       return { ...state, nextPageUrl: action.pageUrl };
-    case "DISABLE_BUTTON":
-      return { ...state, isDisabledBtn: !state.isDisabledBtn };
+    case "ADD_PAGE_NUMBER":
+      return { ...state, numberOfPages: action.pageNum };
     default:
       return state;
   }
@@ -38,29 +38,26 @@ export const setNextPageUrl = (pageUrl) => ({
   pageUrl,
 });
 
-export const setDisableBth = () => ({
-  type: "DISABLE_BUTTON"
-})
+export const setNumberOfPages = (pageNum) => ({
+  type: "ADD_PAGE_NUMBER",
+  pageNum,
+});
+
+
 
 //thunk
 
 export const getCharactersTC = () => (dispatch) => {
   api.getCharacters().then((res) => {
-    dispatch(setCharacters(res));
+    dispatch(setCharacters(res.data.results));
+    dispatch(setNumberOfPages(res.data.info.pages))
   });
 };
 
 export const getNextCharactersTC = (page, pageUrl = "") => (dispatch) => {
   api.getNextPage(page, pageUrl).then((res) => {
-    // debugger
-    if (page >= res.data.info.pages) {
-      dispatch(setDisableBth())
-      dispatch(setCharacters(res.data.results));
-      // debugger
-    } else {
-      // debugger
-      dispatch(setCharacters(res.data.results));
-    }
+    dispatch(setCharacters(res.data.results));
+    dispatch(setNumberOfPages(res.data.info.pages));
   });
 };
 
