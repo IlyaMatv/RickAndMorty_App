@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getCharactersTC,
   getNextCharactersTC,
-  setIsSearchActive,
-  setCharactersRefresh
+  setIsSearchActive
 } from "../../../redux/reducer";
 import PageButton from "../PageButton/PageButton";
 import Character from "./Character/Character";
@@ -16,12 +15,12 @@ const Characters = (props) => {
   const pageUrl = useSelector((state) => state.nextPageUrl);
   const numberOfPages = useSelector((state) => state.numberOfPages);
 
+  console.log(numberOfPages);
   useEffect(() => {
     dispatch(getCharactersTC());
     dispatch(setIsSearchActive());
     return () => {
       dispatch(setIsSearchActive());
-      dispatch(setCharactersRefresh())
     };
   }, []);
 

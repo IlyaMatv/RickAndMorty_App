@@ -18,7 +18,7 @@ export const reducer = (state = initialState, action) => {
     case "ADD_PAGE_NUMBER":
       return { ...state, numberOfPages: action.pageNum };
     case "REFRESH_CHARACTERS":
-      return { ...state, characters: [] };
+      return { ...state, characters: [], nextPageUrl: "", numberOfPages: null };
     default:
       return state;
   }
@@ -41,12 +41,12 @@ export const setCharactersRefresh = () => ({
 
 export const setNextPageUrl = (pageUrl) => ({
   type: "SWITCH_PAGE_URL",
-  pageUrl,
+  pageUrl
 });
 
 export const setNumberOfPages = (pageNum) => ({
   type: "ADD_PAGE_NUMBER",
-  pageNum,
+  pageNum
 });
 
 
@@ -55,6 +55,7 @@ export const setNumberOfPages = (pageNum) => ({
 
 export const getCharactersTC = () => (dispatch) => {
   api.getCharacters().then((res) => {
+    dispatch(setCharactersRefresh())
     dispatch(setCharacters(res.data.results));
     dispatch(setNumberOfPages(res.data.info.pages))
   });
