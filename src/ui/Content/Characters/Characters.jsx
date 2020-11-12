@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getCharactersTC,
   getNextCharactersTC,
   setIsSearchActive,
+  setCharactersRefresh
 } from "../../../redux/reducer";
 import PageButton from "../PageButton/PageButton";
 import Character from "./Character/Character";
@@ -11,8 +12,6 @@ import s from "./Characters.module.css";
 
 const Characters = (props) => {
   const dispatch = useDispatch();
-
-  const [nextPage, setNextPage] = useState(1);
   const characters = useSelector((state) => state.characters);
   const pageUrl = useSelector((state) => state.nextPageUrl);
   const numberOfPages = useSelector((state) => state.numberOfPages);
@@ -22,17 +21,18 @@ const Characters = (props) => {
     dispatch(setIsSearchActive());
     return () => {
       dispatch(setIsSearchActive());
+      dispatch(setCharactersRefresh())
     };
   }, []);
 
   const onClickBtnNext = () => {
-    dispatch(getNextCharactersTC(nextPage + 1, pageUrl));
-    setNextPage(nextPage + 1);
+    dispatch(getNextCharactersTC(props.page + 1, pageUrl));
+    props.pageChanger(props.page + 1);
   };
 
   const onClickBtnPrev = () => {
-    dispatch(getNextCharactersTC(nextPage - 1, pageUrl))
-    setNextPage(nextPage - 1)
+    dispatch(getNextCharactersTC(props.page - 1, pageUrl))
+    props.pageChanger(props.page - 1);
   };
 
   return (
@@ -54,17 +54,17 @@ const Characters = (props) => {
         <div>
           <PageButton
             text="prev"
-            disabled={nextPage <= 1 ? true : false}
+            disabled={props.page <= 1 ? true : false}
             onClickBtn={onClickBtnPrev}
           />
           <PageButton
             text="next"
-            disabled={nextPage >= numberOfPages ? true : false}
+            disabled={props.page >= numberOfPages ? true : false}
             onClickBtn={onClickBtnNext}
           />
         </div>
         <div className={s.pageIs}>
-          Page is: <b>{nextPage}</b>
+          Page is: <b>{props.page}</b>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./MessageCloud.module.css";
 import Name from "./Name/Name";
 import MessageText from "./MessageText/MessageText";
@@ -11,6 +11,11 @@ const MessageCloud = (props) => {
     setIsActive(!isActive);
   };
 
+  
+
+  // console.log(props);
+
+
   return (
     <div
       className={classes.message}
@@ -18,7 +23,7 @@ const MessageCloud = (props) => {
       onMouseLeave={onMouseHandler}
     >
       <Name />
-      {isActive ? <MessageText /> : <MessageLink />}
+      {isActive ? <MessageText /> : <MessageLink pageChanger={props.pageChanger} />}
     </div>
   );
 };

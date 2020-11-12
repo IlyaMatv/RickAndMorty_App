@@ -6,10 +6,11 @@ import s from "./Content.module.css";
 
 const Content = (props) => {
 
+
   return (
     <div className={s.content}>
       {props.link === "ch" ? (
-        <Characters />
+        <Characters page={props.page} pageChanger={props.pageChanger} />
       ) : props.link === "lo" ? (
         <Locations />
       ) : props.link === "ep" ? (

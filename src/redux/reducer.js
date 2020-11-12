@@ -17,6 +17,8 @@ export const reducer = (state = initialState, action) => {
       return { ...state, nextPageUrl: action.pageUrl };
     case "ADD_PAGE_NUMBER":
       return { ...state, numberOfPages: action.pageNum };
+    case "REFRESH_CHARACTERS":
+      return { ...state, characters: [] };
     default:
       return state;
   }
@@ -31,6 +33,10 @@ export const setCharacters = (characters) => ({
 
 export const setIsSearchActive = () => ({
   type: "SWITCH_SEARCH",
+});
+
+export const setCharactersRefresh = () => ({
+  type: "REFRESH_CHARACTERS",
 });
 
 export const setNextPageUrl = (pageUrl) => ({

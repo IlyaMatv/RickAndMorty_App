@@ -10,10 +10,10 @@ const RickMenu = (props) => {
 
   return (
     <div className={s.rick_menu}>
-      <NavLink to="/">
+      {/* <NavLink to="/"> */}
         <img className={s.rick_photo} src={rickPhoto} />
-      </NavLink>
-      <MessageCloud />
+      {/* </NavLink> */}
+      <MessageCloud pageChanger={props.pageChanger} />
     </div>
   );
 };

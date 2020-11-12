@@ -11,19 +11,27 @@ const Search = (props) => {
     setInputValue(e.target.value);
   };
 
+
   const btnOnClick = () => {
     let name = inputValue.toLowerCase();
-    let nameUrl = `&name=${name}`
+    let nameUrl = `&name=${name}`;
     dispatch(getCharactersByNameTC(name, nameUrl));
-    setInputValue("")
+    setInputValue("");
+    props.pageChanger(1)
   };
 
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      btnOnClick()
+    }
+  };
 
   return (
     <div className={s.input_wrap}>
       <div className={s.flex_btn}>
         <input
           className={s.search_input}
+          onKeyPress={onKeyPress}
           type="text"
           onChange={inputHandler}
           value={inputValue}
