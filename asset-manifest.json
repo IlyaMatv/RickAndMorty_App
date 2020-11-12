@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/RickAndMorty_App/static/css/main.5abf0e92.chunk.css",
-    "main.js": "/RickAndMorty_App/static/js/main.3ac65875.chunk.js",
-    "main.js.map": "/RickAndMorty_App/static/js/main.3ac65875.chunk.js.map",
+    "main.js": "/RickAndMorty_App/static/js/main.c1d83baa.chunk.js",
+    "main.js.map": "/RickAndMorty_App/static/js/main.c1d83baa.chunk.js.map",
     "runtime-main.js": "/RickAndMorty_App/static/js/runtime-main.058e195e.js",
     "runtime-main.js.map": "/RickAndMorty_App/static/js/runtime-main.058e195e.js.map",
     "static/js/2.cd959fd9.chunk.js": "/RickAndMorty_App/static/js/2.cd959fd9.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.058e195e.js",
     "static/js/2.cd959fd9.chunk.js",
     "static/css/main.5abf0e92.chunk.css",
-    "static/js/main.3ac65875.chunk.js"
+    "static/js/main.c1d83baa.chunk.js"
   ]
 }
