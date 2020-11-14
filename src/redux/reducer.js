@@ -4,13 +4,16 @@ const initialState = {
   characters: [],
   nextPageUrl: "",
   isSearchActive: false,
-  numberOfPages: null
+  numberOfPages: null,
+  isError: false
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_CHARACTERS":
-      return { ...state, characters: action.characters };
+      return { ...state, characters: action.characters, isError: false };
+    case "THROW_ERROR":
+      return { ...state, isError: true };
     case "SWITCH_SEARCH":
       return { ...state, isSearchActive: !state.isSearchActive };
     case "SWITCH_PAGE_URL":
@@ -26,9 +29,13 @@ export const reducer = (state = initialState, action) => {
 
 //action
 
-export const setCharacters = (characters) => ({
+export const setCharactersSuccess = (characters) => ({
   type: "ADD_CHARACTERS",
   characters,
+});
+
+export const setCharactersError = () => ({
+  type: "THROW_ERROR"
 });
 
 export const setIsSearchActive = () => ({
@@ -41,37 +48,40 @@ export const setCharactersRefresh = () => ({
 
 export const setNextPageUrl = (pageUrl) => ({
   type: "SWITCH_PAGE_URL",
-  pageUrl
+  pageUrl,
 });
 
 export const setNumberOfPages = (pageNum) => ({
   type: "ADD_PAGE_NUMBER",
-  pageNum
+  pageNum,
 });
-
-
 
 //thunk
 
 export const getCharactersTC = () => (dispatch) => {
   api.getCharacters().then((res) => {
-    dispatch(setCharactersRefresh())
-    dispatch(setCharacters(res.data.results));
-    dispatch(setNumberOfPages(res.data.info.pages))
+    dispatch(setCharactersRefresh());
+    dispatch(setCharactersSuccess(res.data.results));
+    dispatch(setNumberOfPages(res.data.info.pages));
   });
 };
 
 export const getNextCharactersTC = (page, pageUrl = "") => (dispatch) => {
   api.getNextPage(page, pageUrl).then((res) => {
-    dispatch(setCharacters(res.data.results));
+    dispatch(setCharactersSuccess(res.data.results));
     dispatch(setNumberOfPages(res.data.info.pages));
   });
 };
 
 export const getCharactersByNameTC = (name, pageUrl) => (dispatch) => {
-  api.getByName(name).then((res) => {
-    dispatch(setCharacters(res.data.results));
-    dispatch(setNextPageUrl(pageUrl));
-    dispatch(setNumberOfPages(res.data.info.pages));
-  });
+  api.getByName(name).then(
+    (res) => {
+      dispatch(setCharactersSuccess(res.data.results));
+      dispatch(setNextPageUrl(pageUrl));
+      dispatch(setNumberOfPages(res.data.info.pages));
+    },
+    (error) => {
+      {error && dispatch(setCharactersError())}
+    }
+  );
 };

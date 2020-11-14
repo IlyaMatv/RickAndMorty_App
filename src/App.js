@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import s from "./App.module.css";
 import Content from "./ui/Content/Content";
 import Header from "./ui/Header/Header";

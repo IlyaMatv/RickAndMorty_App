@@ -52,6 +52,23 @@
     box-shadow: 3px 4px 26px 7px rgba(24,0,34,1);
 }
 
+.input_error {
+    border: 3px solid #e6422c;
+    box-shadow: 3px 4px 26px 7px rgb(117, 2, 21);
+    max-height: 54px;
+    min-height: 50px;
+    height: 100%;
+    min-width: 360px;
+    max-width: 400px;
+    border-radius: 20px;
+    background-color: #45304D;
+    outline: none;
+    color: #fff;
+    font-size: 26px;
+    padding: 0 10px;
+    font-family: 'Balsamiq Sans';
+}
+
 .search_input::-webkit-input-placeholder {
     color: #999999;
     text-align: center;
@@ -71,3 +88,43 @@
 .search_input:focus::-moz-placeholder          {text-indent: 500px; transition: text-indent 0.3s ease;}
 .search_input:focus:-moz-placeholder           {text-indent: 500px; transition: text-indent 0.3s ease;}
 .search_input:focus:-ms-input-placeholder      {text-indent: 500px; transition: text-indent 0.3s ease;}
+
+
+
+
+
+
+
+
+
+.input_error::-webkit-input-placeholder {
+    color: #999999;
+    text-align: center;
+    opacity: .6;
+}
+.input_error::-moz-placeholder {
+    color: #999999;
+    text-align: center;
+}
+
+
+
+.input_error::-webkit-input-placeholder {
+    color: #999999;
+    text-align: center;
+    opacity: .6;
+}
+.input_error::-moz-placeholder {
+    color: #999999;
+    text-align: center;
+}
+
+
+.input_error::-webkit-input-placeholder       {text-indent: 0px;   transition: text-indent 0.3s ease;}
+.input_error::-moz-placeholder                {text-indent: 0px;   transition: text-indent 0.3s ease;}
+.input_error:-moz-placeholder                 {text-indent: 0px;   transition: text-indent 0.3s ease;}
+.input_error:-ms-input-placeholder            {text-indent: 0px;   transition: text-indent 0.3s ease;}
+.input_error:focus::-webkit-input-placeholder {text-indent: 500px; transition: text-indent 0.3s ease;}
+.input_error:focus::-moz-placeholder          {text-indent: 500px; transition: text-indent 0.3s ease;}
+.input_error:focus:-moz-placeholder           {text-indent: 500px; transition: text-indent 0.3s ease;}
+.input_error:focus:-ms-input-placeholder      {text-indent: 500px; transition: text-indent 0.3s ease;}
