@@ -22,4 +22,11 @@ export const api = {
         return res;
       });
   },
+  getLocations() {
+    return axios
+      .get("https://rickandmortyapi.com/api/location")
+      .then((res) => {
+        return res;
+      });
+  },
 };

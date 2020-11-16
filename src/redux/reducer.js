@@ -5,7 +5,8 @@ const initialState = {
   nextPageUrl: "",
   isSearchActive: false,
   numberOfPages: null,
-  isError: false
+  isError: false,
+  locations: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -22,6 +23,8 @@ export const reducer = (state = initialState, action) => {
       return { ...state, numberOfPages: action.pageNum };
     case "REFRESH_CHARACTERS":
       return { ...state, characters: [], nextPageUrl: "", numberOfPages: null };
+    case "ADD_LOCATIONS":
+      return { ...state, locations: action.loc };
     default:
       return state;
   }
@@ -31,11 +34,11 @@ export const reducer = (state = initialState, action) => {
 
 export const setCharactersSuccess = (characters) => ({
   type: "ADD_CHARACTERS",
-  characters
+  characters,
 });
 
 export const setCharactersError = () => ({
-  type: "THROW_ERROR"
+  type: "THROW_ERROR",
 });
 
 export const setIsSearchActive = () => ({
@@ -54,6 +57,11 @@ export const setNextPageUrl = (pageUrl) => ({
 export const setNumberOfPages = (pageNum) => ({
   type: "ADD_PAGE_NUMBER",
   pageNum,
+});
+
+export const setLocationsSuccess = (loc) => ({
+  type: "ADD_LOCATIONS",
+  loc,
 });
 
 //thunk
@@ -81,7 +89,15 @@ export const getCharactersByNameTC = (name, pageUrl) => (dispatch) => {
       dispatch(setNumberOfPages(res.data.info.pages));
     },
     (error) => {
-      {error && dispatch(setCharactersError())}
+      {
+        error && dispatch(setCharactersError());
+      }
     }
   );
+};
+
+export const getLocationsTC = () => (dispatch) => {
+  api.getLocations().then((res) => {
+    dispatch(setLocationsSuccess(res.data.results));
+  });
 };

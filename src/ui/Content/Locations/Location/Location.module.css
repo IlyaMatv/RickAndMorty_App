@@ -1,0 +1,13 @@
+.location {
+    display: flex;
+    height: 200px;
+    width: 200px;
+    margin: 20px;
+    background-color: #3b2942;
+    color: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    padding: 10px;
+    flex-direction: column;
+    /* transition: ease-out 1s; */
+}
