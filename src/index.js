@@ -4,12 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import { applyMiddleware, createStore } from "redux";
-import { reducer } from "./redux/reducer";
-import thunk from "redux-thunk";
+import { store } from './redux/store'
 import { HashRouter } from "react-router-dom";
 
-const store = createStore(reducer, applyMiddleware(thunk));
 
 window.store = store;
 

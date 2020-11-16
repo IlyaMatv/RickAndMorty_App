@@ -10,6 +10,16 @@
     display: flex;
     flex-direction: column;
     text-align: end;
+    position: relative;
+}
+
+.warning {
+    position: absolute;
+    font-size: 20px;
+    color: #eb5e4c;
+    top: -25px;
+    left:50%;
+    transform: translate(-50%, -50%);
 }
 
 .search_btn {

@@ -29,6 +29,7 @@ const Search = (props) => {
   return (
     <div className={s.input_wrap}>
       <div className={s.flex_btn}>
+        {isError && <div className={s.warning}><b>enter correct name</b></div>}
         <input
           className={!isError ? s.search_input : s.input_error}
           onKeyPress={onKeyPress}

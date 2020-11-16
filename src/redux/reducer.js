@@ -31,7 +31,7 @@ export const reducer = (state = initialState, action) => {
 
 export const setCharactersSuccess = (characters) => ({
   type: "ADD_CHARACTERS",
-  characters,
+  characters
 });
 
 export const setCharactersError = () => ({
