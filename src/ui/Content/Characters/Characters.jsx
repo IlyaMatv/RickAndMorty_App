@@ -15,6 +15,7 @@ const Characters = (props) => {
   const pageUrl = useSelector((state) => state.nextPageUrl);
   const numberOfPages = useSelector((state) => state.numberOfPages);
 
+
   useEffect(() => {
     dispatch(getCharactersTC());
     dispatch(setIsSearchActive());
@@ -22,6 +23,7 @@ const Characters = (props) => {
       dispatch(setIsSearchActive());
     };
   }, []);
+
 
   const onClickBtnNext = () => {
     dispatch(getNextCharactersTC(props.page + 1, pageUrl));

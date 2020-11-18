@@ -1,7 +1,14 @@
 .location_wrap {
-    border: 1px solid yellow;
-    /* height: 100%; */
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+}
+
+.btn_wrap {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pageIs {
+    margin: 6px;
 }

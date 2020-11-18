@@ -8,7 +8,7 @@ export const api = {
         return res;
       });
   },
-  getNextPage(page, pageUrl) {
+  getNextPageCharacter(page, pageUrl) {
     return axios
       .get(`https://rickandmortyapi.com/api/character?page=${page}${pageUrl}`)
       .then((res) => {
@@ -25,6 +25,13 @@ export const api = {
   getLocations() {
     return axios
       .get("https://rickandmortyapi.com/api/location")
+      .then((res) => {
+        return res;
+      });
+  },
+  getNextPageLocation(page) {
+    return axios
+      .get(`https://rickandmortyapi.com/api/location?page=${page}`)
       .then((res) => {
         return res;
       });

@@ -1,7 +1,7 @@
 .location {
     display: flex;
-    height: 200px;
-    width: 200px;
+    min-height: 200px;
+    max-width: 200px;
     margin: 20px;
     background-color: #3b2942;
     color: #fff;
@@ -9,5 +9,24 @@
     overflow: hidden;
     padding: 10px;
     flex-direction: column;
-    /* transition: ease-out 1s; */
+    transition: ease-out 1s;
+    cursor: default;
+}
+
+.location span {
+    color: #aaaaaa;
+}
+
+.loc_name {
+    font-size: 22px;
+    margin: 6px;
+}
+
+.loc_info {
+    font-size: 20px;
+    margin: 8px;
+}
+
+.location:hover {
+    background-color: #694279;
 }

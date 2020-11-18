@@ -12,7 +12,7 @@ const Content = (props) => {
       {props.link === "ch" ? (
         <Characters page={props.page} pageChanger={props.pageChanger} />
       ) : props.link === "lo" ? (
-        <Locations />
+        <Locations page={props.page} pageChanger={props.pageChanger} />
       ) : props.link === "ep" ? (
         <Episodes />
       ) : (
