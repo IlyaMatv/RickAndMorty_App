@@ -7,6 +7,7 @@ const initialState = {
   numberOfPages: null,
   isError: false,
   locations: [],
+  charactersInLocation: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -25,6 +26,12 @@ export const reducer = (state = initialState, action) => {
       return { ...state, characters: [], nextPageUrl: "", numberOfPages: null, locations: [] };
     case "ADD_LOCATIONS":
       return { ...state, locations: action.loc };
+    case "ADD_CHARACTERS_IN_LOCATION":
+      return { ...state, 
+        charactersInLocation:  [...state.charactersInLocation, action.character] }
+    case "REFRESH_CHARACTERS_IN_LOCATION":
+      return { ...state, 
+        charactersInLocation:  [] }
     default:
       return state;
   }
@@ -64,6 +71,15 @@ export const setLocationsSuccess = (loc) => ({
   loc
 });
 
+export const setCharactersInLocation = (character) => ({
+  type: "ADD_CHARACTERS_IN_LOCATION",
+  character
+});
+
+export const refreshCharactersInLocation = () => ({
+  type: "REFRESH_CHARACTERS_IN_LOCATION"
+})
+
 //thunk
 
 export const getCharactersTC = () => (dispatch) => {
@@ -90,6 +106,18 @@ export const getCharactersByNameTC = (name, pageUrl) => (dispatch) => {
     },
     (error) => error && dispatch(setCharactersError())
   );
+};
+
+// export const getCharactersByIdTC = (id) => (dispatch) => {
+//   api.getById(id).then((res) => {
+//     debugger
+//   });
+// };
+
+export const getCharactersByURLTC = (url) => (dispatch) => {
+  api.getByUrl(url).then((res) => {
+    dispatch(setCharactersInLocation(res.data))
+  });
 };
 
 

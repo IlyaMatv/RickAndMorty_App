@@ -22,6 +22,20 @@ export const api = {
         return res;
       });
   },
+  // getById(id) {
+  //   return axios
+  //     .get(`https://rickandmortyapi.com/api/character/${id}`)
+  //     .then((res) => {
+  //       return res;
+  //     });
+  // },
+  getByUrl(url) {
+    return axios
+      .get(url)
+      .then((res) => {
+        return res;
+      });
+  },
   getLocations() {
     return axios
       .get("https://rickandmortyapi.com/api/location")
