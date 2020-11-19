@@ -14,11 +14,13 @@
 }
 
 .warning {
+    min-width: max-content;
     position: absolute;
-    font-size: 20px;
+    font-size: 24px;
     color: #eb5e4c;
     top: -25px;
     left:50%;
+    -webkit-text-stroke: 1px #000;
     transform: translate(-50%, -50%);
 }
 

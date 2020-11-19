@@ -69,18 +69,17 @@ export const WhoWasHere = (props) => {
   const [data, setData] = useState([])
   useEffect(async () => {
     
-    const result = await props.charactersInLocation.map(el => {
-      setData(el)
+    await props.charactersInLocation.map(el => {
+      setData()
     })
 
-  });
+  }, [props.charactersInLocation]);
 
   console.log(data)
 
   return (
     <div className={s.whoWasHere}>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore,
-      perspiciatis!
+    {/* {data.name} */}
     </div>
   );
 };
