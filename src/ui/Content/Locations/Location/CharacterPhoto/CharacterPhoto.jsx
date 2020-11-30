@@ -25,8 +25,7 @@ const CharacterPhoto = (props) => {
         onMouseMove={(e) =>
           setTimeout(
             () => setMove({ x: `${e.clientX - 50}`, y: `${e.clientY + 30}` }),
-            100
-          )
+            100)
         }
       >
         {props.name}

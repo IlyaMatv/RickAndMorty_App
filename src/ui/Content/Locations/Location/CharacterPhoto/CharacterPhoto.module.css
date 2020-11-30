@@ -3,6 +3,10 @@
   min-height: max-content;
 }
 
+.residentsP:hover {
+    color: #694279;
+}
+
 .photo {
   position: fixed;
   max-width: 200px;
