@@ -1,0 +1,17 @@
+.residentsP {
+  padding: 10px;
+  min-height: max-content;
+}
+
+.photo {
+  position: fixed;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.photo img {
+    width: 100%;
+}
+

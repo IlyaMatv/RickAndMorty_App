@@ -7,7 +7,7 @@ const initialState = {
   numberOfPages: null,
   isError: false,
   locations: [],
-  charactersInLocation: []
+  residents: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -28,10 +28,10 @@ export const reducer = (state = initialState, action) => {
       return { ...state, locations: action.loc };
     case "ADD_CHARACTERS_IN_LOCATION":
       return { ...state, 
-        charactersInLocation:  [...state.charactersInLocation, action.character] }
+        residents:  [...state.residents, action.character] }
     case "REFRESH_CHARACTERS_IN_LOCATION":
       return { ...state, 
-        charactersInLocation:  [] }
+        residents:  [] }
     default:
       return state;
   }
@@ -115,6 +115,7 @@ export const getCharactersByNameTC = (name, pageUrl) => (dispatch) => {
 // };
 
 export const getCharactersByURLTC = (url) => (dispatch) => {
+  dispatch(refreshCharactersInLocation());
   api.getByUrl(url).then((res) => {
     dispatch(setCharactersInLocation(res.data))
   });

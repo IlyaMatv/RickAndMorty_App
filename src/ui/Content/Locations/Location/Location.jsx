@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getCharactersByURLTC,
-  refreshCharactersInLocation,
-} from "../../../../redux/reducer";
+import { getCharactersByURLTC } from "../../../../redux/reducer";
+import CharacterPhoto from "./CharacterPhoto/CharacterPhoto";
 import s from "./Location.module.css";
 
-const Location = (props) => {
+const Location = React.memo((props) => {
   const dispatch = useDispatch();
-  
+  const residents = useSelector((state) => state.residents);
+  const [selfId, setSelfId] = useState(null);
 
   const getCharacters = () => {
-    dispatch(refreshCharactersInLocation());
-    props.residents.forEach((el) => {
+    props.characters.forEach((el) => {
       dispatch(getCharactersByURLTC(el));
     });
-    props.setShowAll((state) => !state);
+    setSelfId(props.id);
   };
 
   return (
-    <div className={s.location}>
+    <div className={s.location} onMouseLeave={() => setSelfId(null)}>
       <div className={s.loc_name}>
         <span>Name: </span>
         <b>{props.name}</b>
@@ -33,13 +31,35 @@ const Location = (props) => {
       <div className={s.loc_info}>
         <span>Dimension: </span>
         <b>{props.dimension}</b>
+      </div>
+      <div className={s.loc_residents}>
+        <span> Residents: </span>
         <div>
-          <button onClick={getCharacters}>who was here</button>
+          <a className={s.residents_link} onClick={getCharacters}>
+            <i class="far fa-address-card"></i>
+          </a>
         </div>
       </div>
+      {props.id === selfId ? <Residents residents={residents} /> : false}
     </div>
   );
-};
+});
 
 export default Location;
 
+function Residents(props) {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    setData(props.residents);
+  }, [props.residents]);
+
+  return (
+    <div className={s.residents}>
+      {data &&
+        data.map((el) => (
+          <CharacterPhoto image={el.image} key={el.id} name={el.name} />
+        ))}
+    </div>
+  );
+}

@@ -1,33 +1,106 @@
 .location {
-    display: flex;
-    min-height: 200px;
-    max-width: 200px;
-    margin: 20px;
-    background-color: #3b2942;
-    color: #fff;
-    border-radius: 14px;
-    overflow: hidden;
-    padding: 10px;
-    flex-direction: column;
-    transition: ease-out 1s;
-    cursor: default;
+  display: flex;
+  min-height: 200px;
+  max-width: 200px;
+  margin: 20px;
+  background-color: #3b2942;
+  color: #fff;
+  border-radius: 14px;
+  padding: 10px;
+  flex-direction: column;
+  transition: ease-out 1s;
+  cursor: default;
+  position: relative;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #180022;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #180022;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #abd5ea;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: white;
 }
 
 .location span {
-    color: #aaaaaa;
+  color: #aaaaaa;
 }
 
 .loc_name {
-    font-size: 22px;
-    margin: 6px;
+  font-size: 22px;
+  margin: 6px;
 }
 
 .loc_info {
-    font-size: 20px;
-    margin: 8px;
+  font-size: 20px;
+  margin: 8px;
+}
+
+.loc_residents {
+  font-size: 20px;
+  margin: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+}
+
+.residents_link {
+  font-size: 40px;
+  max-height: max-content;
+  margin: 0 24px;
+  cursor: pointer;
+  display: flex;
+  transition: 0.5s;
+  animation: stripes 0.75s infinite linear;
+  background: linear-gradient(
+    43deg,
+    #9adada 25%,
+    #3b2942 25%,
+    #3b2942 50%,
+    #9adada 50%,
+    #9adada 75%,
+    #3b2942 75%,
+    #3b2942
+  );
+  color: #f9f675;
+}
+@keyframes stripes {
+  0% {background-position: 0 0;}
+  100% {background-position: 44px 0;}
 }
 
 .location:hover {
-    background-color: #694279;
+  background-color: #694279;
 }
 
+.location button {
+  min-height: 30px;
+}
+
+.residents {
+  position: absolute;
+  border-radius: 10px;
+  min-width: 230px;
+  max-height: 360px;
+  top: -20px;
+  left: -20px;
+  overflow: auto;
+  background-color: rgb(0, 160, 160, 0.8);
+  font-size: 24px;
+  z-index: 2;
+  padding: 0 14px 0 14px;
+  -webkit-text-stroke: 1px rgb(0, 0, 0, 0.6);
+}

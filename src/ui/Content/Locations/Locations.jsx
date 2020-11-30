@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocationsTC, getNextLocationsTC } from "../../../redux/reducer";
 import Location from "./Location/Location";
@@ -9,10 +9,7 @@ const Locations = (props) => {
   const dispatch = useDispatch();
   const locations = useSelector((state) => state.locations);
   const numberOfPages = useSelector((state) => state.numberOfPages);
-  const [showAll, setShowAll] = useState(false);
-  const charactersInLocation = useSelector(
-    (state) => state.charactersInLocation
-  );
+
 
   useEffect(() => {
     dispatch(getLocationsTC());
@@ -30,17 +27,17 @@ const Locations = (props) => {
 
   return (
     <div className={s.location_wrap}>
-      <WhoWasHere charactersInLocation={charactersInLocation} />
 
       {locations.map((el) => (
         <Location
-          showAll={showAll}
-          setShowAll={setShowAll}
+          // showAll={showAll}
+          // setShowAll={setShowAll}
           key={el.id}
+          id={el.id}
           name={el.name}
           type={el.type}
           dimension={el.dimension}
-          residents={el.residents}
+          characters={el.residents}
         />
       ))}
       <div className={s.btn_wrap}>
@@ -64,22 +61,3 @@ const Locations = (props) => {
 
 export default Locations;
 
-export const WhoWasHere = (props) => {
-  // console.log(props.charactersInLocation);
-  const [data, setData] = useState([])
-  useEffect(async () => {
-    
-    await props.charactersInLocation.map(el => {
-      setData()
-    })
-
-  }, [props.charactersInLocation]);
-
-  console.log(data)
-
-  return (
-    <div className={s.whoWasHere}>
-    {/* {data.name} */}
-    </div>
-  );
-};
