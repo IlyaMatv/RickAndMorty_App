@@ -17,28 +17,27 @@ const CharacterPhoto = (props) => {
   };
 
   return (
-    <>
-      <p
-        className={s.residentsP}
-        onMouseEnter={() => onMouseEnter(props.image)}
-        onMouseLeave={() => onMouseLeave()}
-        onMouseMove={(e) =>
-          setTimeout(
-            () => setMove({ x: `${e.clientX - 50}`, y: `${e.clientY + 30}` }),
-            100)
-        }
-      >
-        {props.name}
-        {photoShow && (
-          <div
-            className={s.photo}
-            style={{ top: `${move.y}px`, left: `${move.x}px` }}
-          >
-            <img src={characterImg} alt="photo" />
-          </div>
-        )}
-      </p>
-    </>
+    <p
+      className={s.residentsP}
+      onMouseEnter={() => onMouseEnter(props.image)}
+      onMouseLeave={() => onMouseLeave()}
+      onMouseMove={(e) =>
+        setTimeout(
+          () => setMove({ x: `${e.clientX - 50}`, y: `${e.clientY + 30}` }),
+          100
+        )
+      }
+    >
+      {props.name}
+      {photoShow && (
+        <div
+          className={s.photo}
+          style={{ top: `${move.y}px`, left: `${move.x}px` }}
+        >
+          <img src={characterImg} alt="photo" />
+        </div>
+      )}
+    </p>
   );
 };
 
