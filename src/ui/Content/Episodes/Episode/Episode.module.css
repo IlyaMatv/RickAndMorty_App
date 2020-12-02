@@ -1,0 +1,21 @@
+.episode_wrap {
+  background-color: #3b2942;
+  min-height: 260px;
+  min-width: 220px;
+  margin: 40px;
+  max-width: 220px;
+  border-radius: 20px;
+  transition: ease-out 1s;
+}
+
+.episode_wrap:hover {
+  background-color: #694279;
+}
+
+.episode_wrap h2 {
+  margin: 14px;
+}
+
+.episode_wrap h3 {
+  margin: 14px;
+}

@@ -14,7 +14,7 @@ const Content = (props) => {
       ) : props.link === "lo" ? (
         <Locations page={props.page} pageChanger={props.pageChanger} />
       ) : props.link === "ep" ? (
-        <Episodes />
+        <Episodes page={props.page} pageChanger={props.pageChanger} />
       ) : (
         false
       )}

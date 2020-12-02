@@ -30,8 +30,6 @@ const Locations = (props) => {
 
       {locations.map((el) => (
         <Location
-          // showAll={showAll}
-          // setShowAll={setShowAll}
           key={el.id}
           id={el.id}
           name={el.name}

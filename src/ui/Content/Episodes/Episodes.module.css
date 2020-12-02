@@ -1,0 +1,18 @@
+.episodes_wrap {
+  min-height: max-content;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.btn_wrap {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pageIs {
+    margin: 6px;
+}
+
+
+

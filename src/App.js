@@ -28,7 +28,7 @@ function App() {
 
             <Route path="/characters" render={() => <Content link="ch" page={page} pageChanger={pageChanger} />} />
             <Route path="/locations" render={() => <Content link="lo" page={page} pageChanger={pageChanger} />} />
-            <Route path="/episodes" render={() => <Content link="ep" />} />
+            <Route path="/episodes" render={() => <Content link="ep" page={page} pageChanger={pageChanger} />} />
             <Route path="/" />
           
         </Switch>

@@ -22,30 +22,31 @@ export const api = {
         return res;
       });
   },
-  // getById(id) {
-  //   return axios
-  //     .get(`https://rickandmortyapi.com/api/character/${id}`)
-  //     .then((res) => {
-  //       return res;
-  //     });
-  // },
   getByUrl(url) {
-    return axios
-      .get(url)
-      .then((res) => {
-        return res;
-      });
+    return axios.get(url).then((res) => {
+      return res;
+    });
   },
   getLocations() {
-    return axios
-      .get("https://rickandmortyapi.com/api/location")
-      .then((res) => {
-        return res;
-      });
+    return axios.get("https://rickandmortyapi.com/api/location").then((res) => {
+      return res;
+    });
   },
   getNextPageLocation(page) {
     return axios
       .get(`https://rickandmortyapi.com/api/location?page=${page}`)
+      .then((res) => {
+        return res;
+      });
+  },
+  getEpisodes() {
+    return axios.get("https://rickandmortyapi.com/api/episode").then((res) => {
+      return res;
+    });
+  },
+  getNextPageEpisodes(page) {
+    return axios
+      .get(`https://rickandmortyapi.com/api/episode?page=${page}`)
       .then((res) => {
         return res;
       });
