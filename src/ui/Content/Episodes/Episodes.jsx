@@ -29,6 +29,7 @@ const Episodes = (props) => {
     
         {episodes.map((el) => (
           <Episode
+            id={el.id}
             name={el.name}
             airDate={el.air_date}
             key={el.id}

@@ -8,7 +8,8 @@ const initialState = {
   isError: false,
   locations: [],
   residents: [],
-  episodes: []
+  episodes: [],
+  episodeСharacters: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -40,21 +41,11 @@ export const reducer = (state = initialState, action) => {
     case "REFRESH_CHARACTERS_IN_LOCATION":
       return { ...state, residents: [] };
     case "ADD_EPISODES":
-      return { ...state, episodes: [...state.episodes, action.ep] };
-    case "ADD_CHARACTERS_IN_EPISODES":
+      return { ...state, episodes: action.ep };
+    case "ADD_CHARACTERS_IN_EPISODE":
       return {
         ...state,
-        episodes: 
-          state.episodes.map((el) => {
-            if (el.id === action.id) {
-              return {
-                ...el,
-                charactersInEpisode: [...el.charactersInEpisode, action.character]
-              };
-            } else {
-              return { ...el };
-            }
-          }),
+        episodeСharacters: [...state.episodeСharacters, action.character],
       };
     default:
       return state;
@@ -100,15 +91,15 @@ export const setEpisodesSuccess = (ep) => ({
   ep,
 });
 
-export const setCharactersInEpisodesSuccess = (id, character) => ({
-  type: "ADD_CHARACTERS_IN_EPISODES",
-  id,
-  character
-});
-
 export const setCharactersInLocation = (character) => ({
   type: "ADD_CHARACTERS_IN_LOCATION",
   character,
+});
+
+export const setEpisodeСharacters = (character, id) => ({
+  type: "ADD_CHARACTERS_IN_EPISODE",
+  character,
+  id,
 });
 
 export const refreshCharactersInLocation = () => ({
@@ -174,39 +165,49 @@ export const getNextLocationsTC = (page) => (dispatch) => {
 export const getEpisodesTC = () => (dispatch) => {
   api.getEpisodes().then((res) => {
     dispatch(setRefresh());
-    res.data.results.forEach(el => {
-      const episode = {...el, charactersInEpisode: []}
-      dispatch(setEpisodesSuccess(episode));
-    })
+    // res.data.results.forEach(el => {
+    // const episode = {...el, charactersInEpisode: []}
+    dispatch(setEpisodesSuccess(res.data.results));
+    // })
     dispatch(setNumberOfPages(res.data.info.pages));
-    res.data.results.forEach((el) => {
-      //episode
-      el.characters.forEach((i) => {
-        api.getByUrl(i).then((res) => {
-          //character
-          dispatch(setCharactersInEpisodesSuccess(el.id, res.data));
-        });
-      });
-    });
+    // res.data.results.forEach((el) => {
+    //   //episode
+    //   el.characters.forEach((i) => {
+    //     api.getByUrl(i).then((res) => {
+    //       //character
+    //       dispatch(setCharactersInEpisodesSuccess(el.id, res.data));
+    //     });
+    //   });
+    // });
   });
 };
 
 export const getNextEpisodesTC = (page) => (dispatch) => {
   api.getNextPageEpisodes(page).then((res) => {
-    dispatch(setRefresh())
-    res.data.results.forEach(el => {
-      const episode = {...el, charactersInEpisode: []}
-      dispatch(setEpisodesSuccess(episode));
-    })
-    res.data.results.forEach((el) => {
-      //episode
-      el.characters.forEach((i) => {
-        api.getByUrl(i).then((res) => {
-          //character
-          dispatch(setCharactersInEpisodesSuccess(el.id, res.data));
-        });
-      });
-    });
+    dispatch(setRefresh());
+    // res.data.results.forEach(el => {
+    // const episode = {...el, charactersInEpisode: []}
+    dispatch(setEpisodesSuccess(res.data.results));
+    // })
+    // res.data.results.forEach((el) => {
+    //   //episode
+    //   el.characters.forEach((i) => {
+    //     api.getByUrl(i).then((res) => {
+    //       // character
+    //       dispatch(setCharactersInEpisodesSuccess(el.id, res.data));
+    //     });
+    //   });
+    // });
     dispatch(setNumberOfPages(res.data.info.pages));
   });
 };
+
+export const getCharactersInEpisodeTC = (url, id) => (dispatch) => {
+
+  api.getByUrl(url).then((res) => {
+    console.log(res.data);
+  });
+
+};
+
+// setEpisodeСharacters

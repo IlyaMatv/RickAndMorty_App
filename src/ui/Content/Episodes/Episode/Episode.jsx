@@ -1,23 +1,33 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCharactersByURLTC } from '../../../../redux/reducer'
-import s from './Episode.module.css'
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCharactersInEpisodeTC } from "../../../../redux/reducer";
+import s from "./Episode.module.css";
 
 const Episode = React.memo((props) => {
 
-    const dispatch = useDispatch()
-    const episodes = useSelector(state => state.episodes)
+
+  const dispatch = useDispatch();
+  const charactersInEpisode = useSelector((state) => state.episodeСharacters);
 
 
-    console.log(episodes);
+  const onClickBtn = () => {
+    props.characters.forEach(el => {
+      for (let i = 0; i < props.characters.length; i++) {
+        dispatch(getCharactersInEpisodeTC(el, props.id));
+      }
+    });
 
+    // console.log(props.characters.length);
+  };
 
-    return (
-        <div className={s.episode_wrap}>
-            <h2>{props.name}</h2>
-            <h3>{props.airDate}</h3>
-        </div>
-    )
-})
+  return (
+    <div className={s.episode_wrap}>
+      <h2>{props.name}</h2>
+      <h3>{props.airDate}</h3>
 
-export default Episode
+      <button onClick={onClickBtn}>click</button>
+    </div>
+  );
+});
+
+export default Episode;
