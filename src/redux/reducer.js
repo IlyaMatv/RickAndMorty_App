@@ -9,7 +9,7 @@ const initialState = {
   locations: [],
   residents: [],
   episodes: [],
-  episodeСharacters: [],
+  episodeСharacters: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -38,8 +38,8 @@ export const reducer = (state = initialState, action) => {
       return { ...state, locations: action.loc };
     case "ADD_CHARACTERS_IN_LOCATION":
       return { ...state, residents: [...state.residents, action.character] };
-    case "REFRESH_CHARACTERS_IN_LOCATION":
-      return { ...state, residents: [] };
+    case "REFRESH_CHARACTERS":
+      return { ...state, residents: [], episodeСharacters: [] };
     case "ADD_EPISODES":
       return { ...state, episodes: action.ep };
     case "ADD_CHARACTERS_IN_EPISODE":
@@ -96,14 +96,13 @@ export const setCharactersInLocation = (character) => ({
   character,
 });
 
-export const setEpisodeСharacters = (character, id) => ({
+export const setEpisodeСharacters = (character) => ({
   type: "ADD_CHARACTERS_IN_EPISODE",
   character,
-  id,
 });
 
-export const refreshCharactersInLocation = () => ({
-  type: "REFRESH_CHARACTERS_IN_LOCATION",
+export const refreshCharacters = () => ({
+  type: "REFRESH_CHARACTERS",
 });
 
 //thunk
@@ -137,7 +136,7 @@ export const getCharactersByNameTC = (name, pageUrl) => (dispatch) => {
 };
 
 export const getCharactersByURLTC = (url) => (dispatch) => {
-  dispatch(refreshCharactersInLocation());
+  dispatch(refreshCharacters());
   api.getByUrl(url).then((res) => {
     dispatch(setCharactersInLocation(res.data));
   });
@@ -202,10 +201,11 @@ export const getNextEpisodesTC = (page) => (dispatch) => {
   });
 };
 
-export const getCharactersInEpisodeTC = (url, id) => (dispatch) => {
-
+export const getCharactersInEpisodeTC = (url) => (dispatch) => {
+  dispatch(refreshCharacters())
   api.getByUrl(url).then((res) => {
-    console.log(res.data);
+    dispatch(setEpisodeСharacters(res.data))
+    // console.log(res.data);
   });
 
 };

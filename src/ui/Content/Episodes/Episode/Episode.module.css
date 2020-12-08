@@ -1,10 +1,10 @@
 .episode_wrap {
   background-color: #3b2942;
-  min-height: 200px;
-  max-height: 320px;
-  min-width: 220px;
+  min-height: 220px;
+  max-height: 220px;
+  min-width: 232px;
   margin: 40px;
-  max-width: 220px;
+  max-width: 232px;
   border-radius: 20px;
   transition: ease-out 1s;
   overflow: auto;
@@ -15,9 +15,23 @@
 }
 
 .episode_wrap h2 {
-  margin: 14px;
+  margin: 17px 17px 0 17px;
 }
 
 .episode_wrap h3 {
-  margin: 14px;
+  margin: 12px 17px 10px 17px;
+}
+
+.episode_wrap img {
+  width: 60px;
+  padding: 6.2px;
+  border-radius: 10px;
+}
+
+
+.charactersInEpisode {
+  /* border: 1px solid red; */
+  display: flex;
+  width: inherit;
+  flex-wrap: wrap;
 }
