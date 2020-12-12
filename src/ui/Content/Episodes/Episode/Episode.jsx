@@ -16,9 +16,7 @@ const Episode = React.memo((props) => {
   }
 
   return (
-    <div className={s.episode_wrap} 
-    // onMouseLeave={() => setSelfId(null)}
-    >
+    <div className={s.episode_wrap} onMouseLeave={() => setSelfId(null)}>
       <h2>{props.name}</h2>
       <h3>{props.airDate}</h3>
 
@@ -26,7 +24,12 @@ const Episode = React.memo((props) => {
       <div className={s.charactersInEpisode}>
         {props.id === selfId
           ? charactersInEpisode.map((el) => (
-              <CharacterInEpisode id={el.id} image={el.image} name={el.name} />
+              <CharacterInEpisode
+                key={el.id}
+                id={el.id}
+                image={el.image}
+                name={el.name}
+              />
             ))
           : false}
       </div>
@@ -37,9 +40,23 @@ const Episode = React.memo((props) => {
 export default Episode;
 
 export const CharacterInEpisode = (props) => {
+  const [isTitleActive, setIsTitleActive] = useState(false);
+  const [position, setPosition] = useState({ x: null, y: null });
+
+
   return (
-    <div key={props.id}>
-      <img src={`${props.image}`} alt={`${props.name}`} title={`${props.name}`} />
+    <div>
+      <img
+        src={`${props.image}`}
+        alt={`${props.name}`}
+        onMouseEnter={(e) => {
+          setPosition({ x: e.clientX, y: e.clientY });
+          console.log(e.target)
+          setIsTitleActive(true);
+        }}
+        onMouseLeave={() => setIsTitleActive(false)}
+      />
+      {isTitleActive && <div className={s.img_title}>{props.name}</div>}
     </div>
   );
 };
