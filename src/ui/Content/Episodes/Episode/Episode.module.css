@@ -7,7 +7,9 @@
   max-width: 232px;
   border-radius: 20px;
   transition: ease-out 1s;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
 }
 
 .episode_wrap:hover {
@@ -26,22 +28,59 @@
   width: 60px;
   padding: 6.2px;
   border-radius: 10px;
+}
+
+.img_wrap {
   position: relative;
 }
 
+.img_wrap:hover::after {
+  content: attr(data-title);
+  position: absolute;
+  top: -30px;
+  left: 2px;
+  z-index: 10;
+  max-width: 64px;
+  word-wrap: break-word;
+  border-radius: 4px;
+  padding: 3px;
+  background-color: rgb(0, 160, 160, 0.6);
+  transition-delay: 1s;
+}
 
 .charactersInEpisode {
   display: flex;
   width: inherit;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 
-.img_title {
-  padding: 4px;
-  border-radius: 6px;
-  position: absolute;
+/* arrow button styles */
+
+.episode_btn__wrap {
   min-height: max-content;
-  min-width: max-content;
-  background-color: rgba(242,189,157, .8);
-  z-index: 3;
+  transform: translate(-50%);
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
 }
+
+.episode_btn__wrap i {
+  font-size: 40px;
+  color: rgb(82, 216, 216);
+  transition: .7s;
+}
+
+.episode_btn__wrap i:hover {
+  transform: scale(1.5);
+}
+
+.episode_btn {
+  background-color: inherit;
+  min-height: 30px;
+  min-width: 30px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+

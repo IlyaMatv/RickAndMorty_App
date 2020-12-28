@@ -7,20 +7,35 @@ const Episode = React.memo((props) => {
   const dispatch = useDispatch();
   const charactersInEpisode = useSelector((state) => state.episodeСharacters);
   const [selfId, setSelfId] = useState(null);
+  const [btnShow, setBtnShow] = useState(true);
 
   function onClickBtn() {
     props.characters.forEach((el) => {
       dispatch(getCharactersInEpisodeTC(el, props.id));
     });
+    setBtnShow(false);
     setSelfId(props.id);
   }
 
   return (
-    <div className={s.episode_wrap} onMouseLeave={() => setSelfId(null)}>
+    <div
+      className={s.episode_wrap}
+      onMouseLeave={() => {
+        setSelfId(null);
+        setBtnShow(true);
+      }}
+    >
       <h2>{props.name}</h2>
       <h3>{props.airDate}</h3>
 
-      <button onClick={onClickBtn}>click</button>
+      <div className={s.episode_btn__wrap}>
+        {btnShow && (
+          <button className={s.episode_btn} onClick={onClickBtn}>
+            <i class="fas fa-angle-double-down"></i>
+          </button>
+        )}
+      </div>
+
       <div className={s.charactersInEpisode}>
         {props.id === selfId
           ? charactersInEpisode.map((el) => (
@@ -40,23 +55,9 @@ const Episode = React.memo((props) => {
 export default Episode;
 
 export const CharacterInEpisode = (props) => {
-  const [isTitleActive, setIsTitleActive] = useState(false);
-  const [position, setPosition] = useState({ x: null, y: null });
-
-
   return (
-    <div>
-      <img
-        src={`${props.image}`}
-        alt={`${props.name}`}
-        onMouseEnter={(e) => {
-          setPosition({ x: e.clientX, y: e.clientY });
-          console.log(e.target)
-          setIsTitleActive(true);
-        }}
-        onMouseLeave={() => setIsTitleActive(false)}
-      />
-      {isTitleActive && <div className={s.img_title}>{props.name}</div>}
+    <div data-title={`${props.name}`} className={s.img_wrap}>
+      <img src={`${props.image}`} alt={`${props.name}`} />
     </div>
   );
 };
