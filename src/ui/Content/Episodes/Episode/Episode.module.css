@@ -1,7 +1,7 @@
 .episode_wrap {
   background-color: #3b2942;
-  min-height: 220px;
-  max-height: 220px;
+  min-height: 260px;
+  max-height: 260px;
   min-width: 232px;
   margin: 40px;
   max-width: 232px;
@@ -17,10 +17,12 @@
 }
 
 .episode_wrap h2 {
+  font-size: 28px;
   margin: 17px 17px 0 17px;
 }
 
 .episode_wrap h3 {
+  color: rgb(200, 200, 200);
   margin: 12px 17px 10px 17px;
 }
 
@@ -32,6 +34,7 @@
 
 .img_wrap {
   position: relative;
+  transition: 1s;
 }
 
 .img_wrap:hover::after {
@@ -68,7 +71,7 @@
 .episode_btn__wrap i {
   font-size: 40px;
   color: rgb(82, 216, 216);
-  transition: .7s;
+  transition: 0.7s;
 }
 
 .episode_btn__wrap i:hover {
@@ -83,4 +86,3 @@
   cursor: pointer;
   outline: none;
 }
-
