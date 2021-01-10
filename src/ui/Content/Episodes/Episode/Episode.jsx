@@ -31,7 +31,7 @@ const Episode = React.memo((props) => {
       <div className={s.episode_btn__wrap}>
         {btnShow && (
           <button className={s.episode_btn} onClick={onClickBtn}>
-            <i class="fas fa-angle-double-down"></i>
+            <i className="fas fa-angle-double-down"></i>
           </button>
         )}
       </div>
