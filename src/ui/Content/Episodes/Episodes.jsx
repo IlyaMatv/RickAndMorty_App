@@ -23,7 +23,7 @@ const Episodes = (props) => {
   useEffect(() => {
     dispatch(getEpisodesTC());
   }, []);
-
+  
   return (
     <div className={s.episodes_wrap}>
     
@@ -32,6 +32,7 @@ const Episodes = (props) => {
             id={el.id}
             name={el.name}
             airDate={el.air_date}
+            ep={el.episode}
             key={el.id}
             characters={el.characters}
           />

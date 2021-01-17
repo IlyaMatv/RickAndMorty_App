@@ -25,6 +25,10 @@ const Episode = React.memo((props) => {
         setBtnShow(true);
       }}
     >
+      <div className={s.background_text}>
+        <div>{props.ep.slice(0, 3)}</div>
+        <div>{props.ep.slice(3, 6)}</div>
+      </div>
       <h2>{props.name}</h2>
       <h3>{props.airDate}</h3>
 

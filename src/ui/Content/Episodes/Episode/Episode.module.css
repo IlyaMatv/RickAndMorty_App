@@ -10,6 +10,22 @@
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
+  z-index: 10;
+}
+
+.background_text {
+  position: absolute;
+  max-height: 100%;
+  width: 100%;
+  overflow: hidden;
+  cursor: default;
+
+  font-size: 7rem;
+  letter-spacing: 0.4rem;
+  font-weight: bold;
+  opacity: .55;
+  color: #694279;
+  z-index: -1;
 }
 
 .episode_wrap:hover {
@@ -54,6 +70,7 @@
   border-radius: 4px;
   padding: 3px;
   background-color: rgb(0, 160, 160, 0.6);
+  pointer-events: none;
 }
 
 .img_wrap:hover::after {
