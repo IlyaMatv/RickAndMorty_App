@@ -5,8 +5,6 @@ import Episodes from "./Episodes/Episodes";
 import s from "./Content.module.css";
 
 const Content = (props) => {
-
-
   return (
     <div className={s.content}>
       {props.link === "ch" ? (
@@ -18,9 +16,6 @@ const Content = (props) => {
       ) : (
         false
       )}
-
-      
-      
     </div>
   );
 };

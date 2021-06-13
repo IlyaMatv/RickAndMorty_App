@@ -10,6 +10,10 @@ const Episodes = (props) => {
   const episodes = useSelector((state) => state.episodes);
   const numberOfPages = useSelector((state) => state.numberOfPages);
 
+  useEffect(() => {
+    dispatch(getEpisodesTC());
+  }, []);
+
   const onClickBtnNext = () => {
     dispatch(getNextEpisodesTC(props.page + 1));
     props.pageChanger(props.page + 1);
@@ -19,10 +23,6 @@ const Episodes = (props) => {
     dispatch(getNextEpisodesTC(props.page - 1));
     props.pageChanger(props.page - 1);
   };
-
-  useEffect(() => {
-    dispatch(getEpisodesTC());
-  }, []);
   
   return (
     <div className={s.episodes_wrap}>

@@ -9,7 +9,8 @@ const initialState = {
   locations: [],
   residents: [],
   episodes: [],
-  episodeСharacters: []
+  episodeСharacters: [],
+  isLoading: false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -18,6 +19,8 @@ export const reducer = (state = initialState, action) => {
       return { ...state, characters: action.characters, isError: false };
     case "THROW_ERROR":
       return { ...state, isError: true };
+    case "SET_IS_LOADING":
+      return { ...state, isLoading: action.loading };
     case "SWITCH_SEARCH":
       return { ...state, isSearchActive: !state.isSearchActive };
     case "SWITCH_PAGE_URL":
@@ -105,16 +108,23 @@ export const refreshCharacters = () => ({
   type: "REFRESH_CHARACTERS",
 });
 
+export const setIsLoading = (loading) => ({
+  type: "SET_IS_LOADING",
+  loading,
+});
+
 //thunk
 
 //characters
 
 export const getCharactersTC = () => (dispatch) => {
-  api.getCharacters().then((res) => {
-    dispatch(setRefresh());
-    dispatch(setCharactersSuccess(res.data.results));
-    dispatch(setNumberOfPages(res.data.info.pages));
-  });
+  // dispatch(setIsLoading(true));
+    api.getCharacters().then((res) => {
+      dispatch(setRefresh());
+      dispatch(setCharactersSuccess(res.data.results));
+      dispatch(setNumberOfPages(res.data.info.pages));
+      // dispatch(setIsLoading(false));
+    });
 };
 
 export const getNextCharactersTC = (page, pageUrl = "") => (dispatch) => {

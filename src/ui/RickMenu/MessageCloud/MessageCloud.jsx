@@ -11,9 +11,6 @@ const MessageCloud = (props) => {
     setIsActive(!isActive);
   };
 
-  
-
-  // console.log(props);
 
 
   return (
