@@ -19,7 +19,7 @@ const Character = (props) => {
     )
 
   return (
-    <div className={s.character} >
+    <div className={s.character}>
       <img className={s.image} src={props.img} alt="img" />
       <div className={s.info_wrap}>
         <div className={s.name}><b>{props.name}</b></div>
